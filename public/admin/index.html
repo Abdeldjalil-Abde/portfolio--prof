@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin – Portfolio AT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body>
+
+<!-- Login -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">AT</div>
+    <h1>Espace Administration</h1>
+    <p>Connectez-vous pour gérer votre portfolio.</p>
+    <form id="loginForm">
+      <label><i class="fas fa-lock"></i><input type="password" id="loginPass" placeholder="Mot de passe" autocomplete="current-password" /></label>
+      <p class="login-error" id="loginError"></p>
+      <button type="submit" class="btn-login">Se connecter <i class="fas fa-arrow-right"></i></button>
+    </form>
+  </div>
+</div>
+
+<!-- Admin Shell -->
+<div class="admin-shell" id="adminShell" style="display:none">
+  <aside class="sidebar">
+    <div class="sidebar-logo">AT <span>Admin</span></div>
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-tab="personal"><i class="fas fa-user"></i> Profil</a>
+      <a href="#" class="nav-item" data-tab="experience"><i class="fas fa-briefcase"></i> Expériences</a>
+      <a href="#" class="nav-item" data-tab="education"><i class="fas fa-graduation-cap"></i> Formation</a>
+      <a href="#" class="nav-item" data-tab="skills"><i class="fas fa-code"></i> Compétences</a>
+      <a href="#" class="nav-item" data-tab="projects"><i class="fas fa-folder"></i> Projets</a>
+      <a href="#" class="nav-item" data-tab="publications"><i class="fas fa-book"></i> Publications</a>
+      <a href="#" class="nav-item" data-tab="images"><i class="fas fa-images"></i> Images</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="/" class="btn-view-site" target="_blank"><i class="fas fa-eye"></i> Voir le site</a>
+      <button class="btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div>
+        <h2 id="tabTitle">Profil</h2>
+        <p id="tabDesc" class="api-status">Connexion à Cloudflare D1…</p>
+      </div>
+      <button class="btn-save" id="globalSave"><i class="fas fa-save"></i> Sauvegarder</button>
+    </div>
+    <div class="toast" id="toast"></div>
+
+    <!-- PERSONAL -->
+    <div class="tab-content active" id="tab-personal">
+      <div class="form-grid">
+        <div class="field-group"><label>Nom complet</label><input type="text" id="p-name" /></div>
+        <div class="field-group"><label>Titre</label><input type="text" id="p-title" /></div>
+        <div class="field-group"><label>Sous-titre</label><input type="text" id="p-subtitle" /></div>
+        <div class="field-group full"><label>Tagline</label><textarea id="p-tagline" rows="2"></textarea></div>
+        <div class="field-group"><label>Email</label><input type="email" id="p-email" /></div>
+        <div class="field-group"><label>Téléphone</label><input type="text" id="p-phone" /></div>
+        <div class="field-group"><label>Localisation</label><input type="text" id="p-location" /></div>
+        <div class="field-group"><label>GitHub URL</label><input type="text" id="p-github" /></div>
+        <div class="field-group"><label>LinkedIn URL</label><input type="text" id="p-linkedin" /></div>
+        <div class="field-group full">
+          <label>Photo de profil</label>
+          <div class="photo-upload-area">
+            <div class="photo-preview" id="photoPreview"><span>Aucune photo</span></div>
+            <div>
+              <label class="upload-btn" id="profileUploadBtn">
+                <i class="fas fa-upload"></i> Uploader depuis R2
+                <input type="file" id="photoFile" accept="image/*" hidden />
+              </label>
+              <p style="font-size:.75rem;color:var(--text-dim);margin-top:6px">L'image sera stockée dans Cloudflare R2</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="tab-content" id="tab-experience">
+      <div class="list-header"><h3>Expériences professionnelles</h3><button class="btn-add" id="addExpBtn"><i class="fas fa-plus"></i> Ajouter</button></div>
+      <div id="expList" class="items-list"></div>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="tab-content" id="tab-education">
+      <div class="list-header"><h3>Formation académique</h3><button class="btn-add" id="addEduBtn"><i class="fas fa-plus"></i> Ajouter</button></div>
+      <div id="eduList" class="items-list"></div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="tab-content" id="tab-skills">
+      <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:20px">Compétences par catégorie (séparées par des virgules)</p>
+      <div class="form-grid" id="skillsForm"></div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="tab-content" id="tab-projects">
+      <div class="list-header"><h3>Projets</h3><button class="btn-add" id="addProjBtn"><i class="fas fa-plus"></i> Ajouter</button></div>
+      <div id="projList" class="items-list"></div>
+    </div>
+
+    <!-- PUBLICATIONS -->
+    <div class="tab-content" id="tab-publications">
+      <div class="list-header"><h3>Publications</h3><button class="btn-add" id="addPubBtn"><i class="fas fa-plus"></i> Ajouter</button></div>
+      <div id="pubListAdmin" class="items-list"></div>
+    </div>
+
+    <!-- IMAGES -->
+    <div class="tab-content" id="tab-images">
+      <div class="list-header"><h3>Images des projets</h3></div>
+      <div class="image-upload-section">
+        <div class="drop-zone-r2" id="dropZoneR2">
+          <i class="fas fa-cloud-upload-alt" style="font-size:2rem;color:var(--text-dim);margin-bottom:12px"></i>
+          <p>Glissez vos images ici ou cliquez pour sélectionner</p>
+          <p style="font-size:.78rem;color:var(--text-dim)">Stockées dans Cloudflare R2 · Max 5 MB · JPG, PNG, WebP</p>
+          <input type="file" id="r2FileInput" accept="image/*" multiple hidden />
+        </div>
+        <div>
+          <label style="display:block;font-size:.8rem;color:var(--text-muted);margin-bottom:6px">Associer au projet :</label>
+          <select id="uploadProjectSelect" style="width:100%;max-width:300px"></select>
+        </div>
+        <div class="r2-gallery" id="r2Gallery"></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Éditer</h3>
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" id="modalCancel">Annuler</button>
+      <button class="btn-save" id="modalSave">Enregistrer</button>
+    </div>
+  </div>
+</div>
+
+<script src="/admin/admin.js"></script>
+</body>
+</html>

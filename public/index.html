@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abdeldjalil Tedjini – Ingénieur Informatique</title>
+  <meta name="description" content="Portfolio de Abdeldjalil Tedjini – Ingénieur en informatique spécialisé en administration et sécurité des réseaux." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body class="dark">
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follower" id="cursor-follower"></div>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <div class="loader-inner">
+    <div class="loader-bar"></div>
+    <span class="loader-text">AT</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">AT</a>
+    <ul class="nav-links">
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#projects">Projets</a></li>
+      <li><a href="#experience">Expérience</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+      <a class="btn-cv" href="/admin/" target="_blank"><i class="fas fa-lock"></i> Admin</a>
+      <button class="nav-burger" id="navBurger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <!-- <div class="hero-badge"><span class="hero-badge-dot"></span><span id="heroBadgeText">Disponible pour de nouveaux projets</span></div> -->
+      <h1 class="hero-title" id="heroTitle"><span class="skeleton sk-title"></span></h1>
+      <p class="hero-sub" id="heroSub"><span class="skeleton sk-line"></span></p>
+      <p class="hero-tagline" id="heroTagline"><span class="skeleton sk-paragraph"></span></p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="#projects">Voir mes projets <i class="fas fa-arrow-right"></i></a>
+        <a class="btn-ghost" href="#contact">Me contacter</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>3</strong><span>Publications IEEE</span></div>
+        <div class="stat"><strong>6+</strong><span>Projets réalisés</span></div>
+        <div class="stat"><strong>3+</strong><span>Ans d'expérience</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-ring">
+        <div class="avatar" id="heroAvatar"><span id="heroInitials">AT</span></div>
+        <div class="orbit orbit-1"><span class="orbit-dot"></span></div>
+        <div class="orbit orbit-2"><span class="orbit-dot"></span></div>
+      </div>
+      <div class="floating-chips">
+        <div class="chip chip-1"><i class="fas fa-shield-alt"></i> Sécurité Réseaux</div>
+        <div class="chip chip-2"><i class="fas fa-brain"></i> Federated Learning</div>
+        <div class="chip chip-3"><i class="fas fa-code"></i> Full Stack</div>
+        <div class="chip chip-4"><i class="fas fa-wifi"></i> Administration Réseau</div>
+      </div>
+    </div>
+    <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-label">01 / À propos</div>
+    <div class="about-grid">
+      <div class="about-text" id="aboutText">
+        <h2 class="section-title">Qui suis-je ?</h2>
+        <div id="aboutDesc"><span class="skeleton sk-paragraph"></span></div>
+        <div class="about-langs" id="aboutLangs"></div>
+      </div>
+      <div class="about-cards" id="aboutCards"></div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-label">02 / Compétences</div>
+    <h2 class="section-title">Stack technique</h2>
+    <div class="skills-container" id="skillsContainer"><span class="skeleton sk-paragraph"></span></div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-label">03 / Projets</div>
+    <div class="projects-header">
+      <h2 class="section-title">Projets & Réalisations</h2>
+      <div class="project-filters" id="projectFilters"></div>
+    </div>
+    <div class="projects-grid" id="projectsGrid"><span class="skeleton sk-card"></span></div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="section-label">04 / Expérience</div>
+    <h2 class="section-title">Parcours professionnel</h2>
+    <div class="timeline" id="timeline"></div>
+    <div class="education-grid" id="educationGrid"></div>
+  </section>
+
+  <section class="section" id="publications">
+    <div class="section-label">05 / Publications</div>
+    <h2 class="section-title">Travaux de recherche</h2>
+    <div class="pub-list" id="pubList"></div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-label">06 / Contact</div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2 class="section-title">Travaillons ensemble</h2>
+        <p class="contact-sub">Intéressé par une collaboration, un projet de recherche, ou simplement une discussion technique ?</p>
+        <div class="contact-links" id="contactLinks"></div>
+      </div>
+      <div class="contact-form-wrap">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <label>Nom<input type="text" name="name" placeholder="Votre nom" required /></label>
+            <label>Email<input type="email" name="email" placeholder="votre@email.com" required /></label>
+          </div>
+          <label>Sujet<input type="text" name="subject" placeholder="Sujet de votre message" /></label>
+          <label>Message<textarea name="message" rows="5" placeholder="Décrivez votre projet ou question..." required></textarea></label>
+          <button type="submit" class="btn-primary">Envoyer <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-logo">AT</span>
+    <p>&copy; <span id="footerYear"></span> Abdeldjalil Tedjini. Tous droits réservés.</p>
+    <div class="footer-social" id="footerSocial"></div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+
+<script src="/js/main.js"></script>
+</body>
+</html>
