@@ -1,0 +1,28 @@
+# wrangler.toml — Configuration Cloudflare Workers + Pages
+name = "portfolio-at"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "public"
+
+# ─── D1 Database (données structurées) ───────────────────────
+[[d1_databases]]
+binding = "DB"
+database_name = "portfolio_db"
+database_id   = "e13605a9-6821-43fb-b514-b1ceedcf57ec"
+
+# ─── KV Namespace (cache sessions admin) ────────────────────
+[[kv_namespaces]]
+binding = "KV"
+id      = "5039e9ef660147269e8c60d8bf040e78"
+
+# ─── R2 Bucket (images & fichiers) ──────────────────────────
+[[r2_buckets]]
+binding    = "R2"
+bucket_name = "portfolio-images"
+
+# ─── Variables d'environnement ───────────────────────────────
+[vars]
+ENVIRONMENT = "production"
+
+# ─── Secrets (à définir via: wrangler secret put NOM) ────────
+# ADMIN_PASSWORD_HASH  → hash bcrypt du mot de passe admin    ::  123
+# JWT_SECRET           → clé secrète pour signer les tokens JWT    ::  123
